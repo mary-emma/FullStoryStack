@@ -33,12 +33,8 @@ public class homepage extends javax.swing.JFrame {
         showMyBooksBtn = new javax.swing.JButton();
         showAllBooksBtn = new javax.swing.JButton();
         statsBtn = new javax.swing.JButton();
+        logoutBtn = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        logoutOpt = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        logOutOpt = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        aboutOpt = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -89,6 +85,13 @@ public class homepage extends javax.swing.JFrame {
             }
         });
 
+        logoutBtn.setText("Log Out");
+        logoutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -109,14 +112,21 @@ public class homepage extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel1)
                         .addGap(428, 428, 428)))
-                .addComponent(statsBtn)
-                .addGap(76, 76, 76))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(statsBtn)
+                        .addGap(76, 76, 76))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(logoutBtn)
+                        .addGap(17, 17, 17))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(jLabel1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(logoutBtn))
                 .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addBookBtn)
@@ -128,40 +138,6 @@ public class homepage extends javax.swing.JFrame {
         );
 
         jMenuBar1.setBackground(new java.awt.Color(204, 204, 204));
-
-        logoutOpt.setText("File");
-
-        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jMenuItem3.setText("Home");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        logoutOpt.add(jMenuItem3);
-
-        logOutOpt.setText("Log out");
-        logOutOpt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logOutOptActionPerformed(evt);
-            }
-        });
-        logoutOpt.add(logOutOpt);
-
-        jMenuBar1.add(logoutOpt);
-
-        jMenu2.setText("About");
-
-        aboutOpt.setText("About");
-        aboutOpt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aboutOptActionPerformed(evt);
-            }
-        });
-        jMenu2.add(aboutOpt);
-
-        jMenuBar1.add(jMenu2);
-
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -181,10 +157,6 @@ public class homepage extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
-
     private void addBookBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBookBtnActionPerformed
         setVisible(false);
         addBook bookObj = new addBook();
@@ -203,18 +175,6 @@ public class homepage extends javax.swing.JFrame {
         showBookObj.setVisible(true);
     }//GEN-LAST:event_showAllBooksBtnActionPerformed
 
-    private void aboutOptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutOptActionPerformed
-        setVisible(false);
-        about aboutObj = new about();
-        aboutObj.setVisible(true);
-    }//GEN-LAST:event_aboutOptActionPerformed
-
-    private void logOutOptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutOptActionPerformed
-        setVisible(false);
-        login loginObj = new login();
-        loginObj.setVisible(true);
-    }//GEN-LAST:event_logOutOptActionPerformed
-
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
         setVisible(false);
         book bookObj = new book();
@@ -226,6 +186,13 @@ public class homepage extends javax.swing.JFrame {
         stats statsObj = new stats();
         statsObj.setVisible(true);
     }//GEN-LAST:event_statsBtnActionPerformed
+
+    private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
+        setVisible(false);
+        this.readerObj.setReader(null);
+        login loginObj = new login();
+        loginObj.setVisible(true);
+    }//GEN-LAST:event_logoutBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -263,17 +230,13 @@ public class homepage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem aboutOpt;
     private javax.swing.JButton addBookBtn;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JMenuItem logOutOpt;
-    private javax.swing.JMenu logoutOpt;
+    private javax.swing.JButton logoutBtn;
     private javax.swing.JButton searchBtn;
     private javax.swing.JButton showAllBooksBtn;
     private javax.swing.JButton showMyBooksBtn;
